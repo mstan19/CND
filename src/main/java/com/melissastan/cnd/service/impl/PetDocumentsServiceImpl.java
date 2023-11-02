@@ -19,18 +19,14 @@ public class PetDocumentsServiceImpl implements PetDocumentsService {
     }
 
     @Override
-    public List<String> findDocsByStatus(String status) {
-        List<PetDocuments> listOfPetDocs= petdocRepo.findAll();
-        System.out.println(listOfPetDocs);
-        System.out.println("asnwer");
-        System.out.println(listOfPetDocs.stream()
-                .map((listOfPetDoc) -> listOfPetDoc.getStatus())
-                .collect(Collectors.toList()));
-        return listOfPetDocs.stream()
-                .map((listOfPetDoc) -> listOfPetDoc.getStatus())
-                .collect(Collectors.toList());
+    public List<PetDocuments> findDocsByStatus(String status) {
+//        List<PetDocuments> listOfPetDocs= petdocRepo.findAll();
+//        System.out.println(listOfPetDocs.stream()
+//                .map((listOfPetDoc) -> petdocRepo.findByStatus("pending"))
+//                .collect(Collectors.toList()));
+//        System.out.println("status"+status);
 //        System.out.println(petdocRepo.findByStatus(status));
-//        return listOfPetDocs.findByStatus(status);
+        return petdocRepo.findByStatus(status);
     }
     public PetDocuments addPetDocument(PetDocuments petdoc) {
         return petdocRepo.save(petdoc);

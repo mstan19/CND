@@ -7,7 +7,7 @@ import java.util.List;
 @Service
 public interface PetDocumentsService {
 
-    List<String> findDocsByStatus(String status);
+    List<PetDocuments> findDocsByStatus(String status);
 
     PetDocuments addPetDocument(PetDocuments petdoc);
 //    void addPendingObject(PetDocuments petdoc);
