@@ -2,6 +2,7 @@ package com.melissastan.cnd;
 
 import com.melissastan.cnd.model.PetDocuments;
 import com.melissastan.cnd.service.ApprovalService;
+import com.melissastan.cnd.service.PetDocumentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,15 +19,24 @@ public class CndApplication {
 
     @Autowired
     ApprovalService approvalService;
+    @Autowired
+    PetDocumentsService petDocumentsService;
 
     @Bean
     public CommandLineRunner demo() {
         return (args) -> {
             PetDocuments petDocuments1 = new PetDocuments();
-//            approvalService.determineClass(photo1);
-            approvalService.getPendingObjects();
+            PetDocuments petDocuments2 = new PetDocuments();
+            petDocuments1.setTypeOfDocument("pending");
+            petDocuments2.setTypeOfDocument("approved");
+//            TO DO : add doc to db
+            petDocumentsService.addPetDocument(petDocuments1);
+            petDocumentsService.addPetDocument(petDocuments2);
 
-//            approvalService.addPendingObject(record1);
+
+//            approvalService.getPendingObjects();
+            petDocumentsService.findDocsByStatus("pending");
+
         };
     }
 
