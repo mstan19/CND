@@ -1,8 +1,16 @@
-package com.javaproject.CND.model;
+package com.melissastan.cnd.model;
+
+import jakarta.persistence.*;
 
 import java.io.Serializable;
-
+@Entity
 public class Admin implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false, updatable = false)
+    private Long id;
+
+    @Column(nullable = true, updatable = true)
     private String username;
     private String password;
 

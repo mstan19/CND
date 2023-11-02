@@ -1,12 +1,10 @@
-package com.javaproject.CND.model;
+package com.melissastan.cnd.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 
+@Entity
 public class GeneralInformation implements Serializable {
     public GeneralInformation() {}
 
@@ -24,10 +22,13 @@ public class GeneralInformation implements Serializable {
     @Column(nullable = false, updatable = false)
     private Long id;
     private String description;
+    @Column(nullable = true, updatable = false)
     private String breed;
+    @Column(nullable = false, updatable = false)
     private String gender;
+    @Column(nullable = true, updatable = true)
     private float age;
-    @Column(nullable = false, updatable = true)
+    @Column(nullable = true, updatable = true)
     private float lastVetVisit;
 
     public Long getId() {

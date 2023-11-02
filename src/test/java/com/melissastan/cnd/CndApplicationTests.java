@@ -1,4 +1,4 @@
-package com.javaproject.CND;
+package com.melissastan.cnd;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

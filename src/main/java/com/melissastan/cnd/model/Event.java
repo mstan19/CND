@@ -1,8 +1,10 @@
-package com.javaproject.CND.model;
+package com.melissastan.cnd.model;
+
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-
+@Entity
 public class Event implements Serializable {
     public Event() {}
 
@@ -10,6 +12,10 @@ public class Event implements Serializable {
         this.feedDateTime = feedDateTime;
         this.typeOfFood = typeOfFood;
     }
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false, updatable = false)
+    private Long id;
     private LocalDateTime feedDateTime;
     private String typeOfFood;
 

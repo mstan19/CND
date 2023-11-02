@@ -1,9 +1,11 @@
-package com.javaproject.CND.model;
+package com.melissastan.cnd.model;
+
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
+@Entity
 public class Announcement implements Serializable {
     public Announcement() {}
 
@@ -13,8 +15,14 @@ public class Announcement implements Serializable {
         this.expirationDate = expirationDate;
         this.isExpired = isExpired;
     }
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false, updatable = false)
+    private Long id;
+    @Column(nullable = false, updatable = true)
     private LocalDate date;
     private String message;
+    @Column(nullable = false, updatable = false)
     private LocalDateTime expirationDate;
     private boolean isExpired;
 
