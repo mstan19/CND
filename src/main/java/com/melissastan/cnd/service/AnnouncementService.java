@@ -4,12 +4,15 @@ import com.melissastan.cnd.model.Announcement;
 import com.melissastan.cnd.model.PetDocument;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
 public interface AnnouncementService {
     Announcement addAnnouncement(Announcement announcement);
     List<Announcement> getAllNonExpiredAnnouncements ();
-    Announcement checkExpirationOnAnnouncement(Announcement announcement);
+    void checkAndSaveOrDeleteExpirationOnAnnouncement(Announcement announcement);
+    void deleteExpiredAnnouncement(Announcement announcement);
+    LocalDate createExpirationDateForAnnouncement(Announcement announcement);
 }
 

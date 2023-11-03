@@ -24,12 +24,10 @@ public class CndApplication {
     }
     @Autowired
     PetDocumentService petDocumentService;
-
     @Autowired
     PetDocumentRepository petDocumentsRepository;
     @Autowired
     AnnouncementService announcementService;
-
     @Autowired
     AnnouncementRepository announcementRepository;
     @Bean
@@ -39,16 +37,22 @@ public class CndApplication {
             Announcement announcement2 = new Announcement();
             LocalDate today = LocalDate.now();
             LocalDate nextWeek = today.plusWeeks(2);
+            LocalDate lastWeek = today.minusWeeks(2);
+
             announcement1.setDate(today);
 //            false
             announcement1.setExpired(nextWeek.isBefore(today));
             announcement1.setMessage("asdasdadasda");
-            announcement1.setExpirationDate(nextWeek);
-            System.out.println(nextWeek.isBefore(today));
+            announcement1.setExpirationDate(announcementService.createExpirationDateForAnnouncement(announcement1));
+//            System.out.println(nextWeek.isAfter(today));
             announcement2.setDate(today);
-            announcement2.setExpired(nextWeek.isBefore(today));
+            //true
+            announcement2.setExpired(lastWeek.isBefore(today));
             announcement2.setMessage("asdasdadasda");
-            announcement2.setExpirationDate(nextWeek);
+            announcement2.setExpirationDate(lastWeek);
+            announcementService.checkAndSaveOrDeleteExpirationOnAnnouncement(announcement1);
+            announcementService.checkAndSaveOrDeleteExpirationOnAnnouncement(announcement2);
+            announcementService.getAllNonExpiredAnnouncements();
             System.out.println("find all ann");
             System.out.println(announcementRepository.findAll());
 
