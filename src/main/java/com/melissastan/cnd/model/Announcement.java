@@ -9,7 +9,8 @@ import java.time.LocalDateTime;
 public class Announcement implements Serializable {
     public Announcement() {}
 
-    public Announcement(LocalDate date, String message, LocalDateTime expirationDate, boolean isExpired) {
+    public Announcement(Long id, LocalDate date, String message, LocalDate expirationDate, boolean isExpired) {
+        this.id = id;
         this.date = date;
         this.message = message;
         this.expirationDate = expirationDate;
@@ -23,8 +24,12 @@ public class Announcement implements Serializable {
     private LocalDate date;
     private String message;
     @Column(nullable = false, updatable = false)
-    private LocalDateTime expirationDate;
+    private LocalDate expirationDate;
     private boolean isExpired;
+
+    public Long getId() {
+        return id;
+    }
 
     public LocalDate getDate() {
         return date;
@@ -42,11 +47,11 @@ public class Announcement implements Serializable {
         this.message = message;
     }
 
-    public LocalDateTime getExpirationDate() {
+    public LocalDate getExpirationDate() {
         return expirationDate;
     }
 
-    public void setExpirationDate(LocalDateTime expirationDate) {
+    public void setExpirationDate(LocalDate expirationDate) {
         this.expirationDate = expirationDate;
     }
 
@@ -55,7 +60,7 @@ public class Announcement implements Serializable {
     }
 
     public void setExpired(boolean expired) {
-        isExpired = expired;
+        this.isExpired = expired;
     }
 
     @Override
