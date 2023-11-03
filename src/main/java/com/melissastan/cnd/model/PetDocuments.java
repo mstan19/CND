@@ -26,7 +26,12 @@ public class PetDocuments implements Serializable {
     @Column(nullable = false, updatable = false)
     private String url;
 
+    public Long getId() {
+        return id;
+    }
+
     private String typeOfDocument;
+
 
     public LocalDate getDate() {
         return date;

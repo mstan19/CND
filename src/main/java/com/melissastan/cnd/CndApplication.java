@@ -1,6 +1,7 @@
 package com.melissastan.cnd;
 
 import com.melissastan.cnd.model.PetDocuments;
+import com.melissastan.cnd.repository.PetDocumentsRepository;
 import com.melissastan.cnd.service.ApprovalService;
 import com.melissastan.cnd.service.PetDocumentsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ public class CndApplication {
     @Autowired
     PetDocumentsService petDocumentsService;
 
+    @Autowired
+    PetDocumentsRepository petDocumentsRepository;
+
     @Bean
     public CommandLineRunner demo() {
         return (args) -> {
@@ -38,13 +42,13 @@ public class CndApplication {
             petDocuments2.setDate(LocalDate.now());
             petDocuments2.setTypeOfDocument("photo");
             petDocuments2.setStatus("approved");
-//            TO DO : add doc to db
             petDocumentsService.addPetDocument(petDocuments1);
             petDocumentsService.addPetDocument(petDocuments2);
 
-
-//            approvalService.getPendingObjects();
-            petDocumentsService.findDocsByStatus("approved");
+            petDocumentsService.approvePendingPetDocument(petDocuments1);
+            System.out.println("here");
+            System.out.println( petDocumentsRepository.findAll());
+            petDocumentsRepository.findAll();
 
         };
     }

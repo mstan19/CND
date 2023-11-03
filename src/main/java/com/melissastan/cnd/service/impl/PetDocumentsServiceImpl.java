@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class PetDocumentsServiceImpl implements PetDocumentsService {
@@ -20,36 +19,16 @@ public class PetDocumentsServiceImpl implements PetDocumentsService {
 
     @Override
     public List<PetDocuments> findDocsByStatus(String status) {
-//        List<PetDocuments> listOfPetDocs= petdocRepo.findAll();
-//        System.out.println(listOfPetDocs.stream()
-//                .map((listOfPetDoc) -> petdocRepo.findByStatus("pending"))
-//                .collect(Collectors.toList()));
-//        System.out.println("status"+status);
-//        System.out.println(petdocRepo.findByStatus(status));
         return petdocRepo.findByStatus(status);
     }
     public PetDocuments addPetDocument(PetDocuments petdoc) {
         return petdocRepo.save(petdoc);
     }
-
-
-
-
-//    @Override
-//    public void addPendingObject(PetDocuments petdoc){
-
-//    };
-//    @Override
-//    public List<PetDocuments> getPendingObjects(){
-//        System.out.println("get pending objects1");
-//
-//        System.out.println(petdocRepo.findAll());
-//        System.out.println("get pending objects");
-//        return petdocRepo.findAll();
-//    };
-
     @Override
-    public void approvePendingObjects(Object obj){
+    public PetDocuments approvePendingPetDocument(PetDocuments petdoc){
+        petdoc.setStatus("approved");
+        addPetDocument(petdoc);
+        return petdoc;
 
     };
 }

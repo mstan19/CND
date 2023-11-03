@@ -1,16 +1,16 @@
 version: '3'
 
 services:
-  cnd:
-    image: 'cnd:1.0'
-    ports:
-      - "80:8080"
-    depends_on:
-      - mysql
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/cnd
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=test
+#  cnd:
+#    image: 'cnd:1.0'
+#    ports:
+#      - "80:8080"
+#    depends_on:
+#      - mysql
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/cnd
+#      - SPRING_DATASOURCE_USERNAME=root
+#      - SPRING_DATASOURCE_PASSWORD=test
 
   mysql:
     image: "mysql:8.1.0"
