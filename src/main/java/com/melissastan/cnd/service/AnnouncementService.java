@@ -14,5 +14,6 @@ public interface AnnouncementService {
     void checkAndSaveOrDeleteExpirationOnAnnouncement(Announcement announcement);
     void deleteExpiredAnnouncement(Announcement announcement);
     LocalDate createExpirationDateForAnnouncement(Announcement announcement);
+    Announcement updateMessageOnAnnouncement(Announcement announcement,String newMessage);
 }
 

@@ -43,4 +43,9 @@ public class AnnouncementServiceImpl implements AnnouncementService {
         announcement.setExpirationDate(newExpiredDate);
         return announcement.getExpirationDate();
     };
+    @Override
+    public Announcement updateMessageOnAnnouncement(Announcement announcement,String newMessage){
+        announcement.setMessage(newMessage);
+        return announcementRepository.save(announcement);
+    }
 }
