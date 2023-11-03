@@ -5,10 +5,10 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 @Entity
-public class PetDocuments implements Serializable {
-    public PetDocuments() {}
+public class PetDocument implements Serializable {
+    public PetDocument() {}
 
-    public PetDocuments(LocalDate date, String status, String url, String typeOfDocument) {
+    public PetDocument(LocalDate date, String status, String url, String typeOfDocument) {
         this.date = date;
         this.status = status;
         this.url = url;

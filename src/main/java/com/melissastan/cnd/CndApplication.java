@@ -1,9 +1,8 @@
 package com.melissastan.cnd;
 
-import com.melissastan.cnd.model.PetDocuments;
-import com.melissastan.cnd.repository.PetDocumentsRepository;
-import com.melissastan.cnd.service.ApprovalService;
-import com.melissastan.cnd.service.PetDocumentsService;
+import com.melissastan.cnd.model.PetDocument;
+import com.melissastan.cnd.repository.PetDocumentRepository;
+import com.melissastan.cnd.service.PetDocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -20,34 +19,35 @@ public class CndApplication {
 
     }
 
-//    @Autowired
+    //    @Autowired
 //    ApprovalService approvalService;
     @Autowired
-    PetDocumentsService petDocumentsService;
+    PetDocumentService petDocumentService;
 
     @Autowired
-    PetDocumentsRepository petDocumentsRepository;
+    PetDocumentRepository petDocumentsRepository;
 
     @Bean
     public CommandLineRunner demo() {
         return (args) -> {
-            PetDocuments petDocuments1 = new PetDocuments();
-            PetDocuments petDocuments2 = new PetDocuments();
-            petDocuments1.setUrl("https://melissastan.com");
-            petDocuments1.setDate(LocalDate.now());
-            petDocuments1.setTypeOfDocument("photo");
-            petDocuments1.setStatus("pending");
+            PetDocument petDocument1 = new PetDocument();
+            PetDocument petDocument2 = new PetDocument();
+            petDocument1.setUrl("https://melissastan.com");
+            petDocument1.setDate(LocalDate.now());
+            petDocument1.setTypeOfDocument("photo");
+            petDocument1.setStatus("pending");
 
-            petDocuments2.setUrl("https://melissastan.com");
-            petDocuments2.setDate(LocalDate.now());
-            petDocuments2.setTypeOfDocument("photo");
-            petDocuments2.setStatus("approved");
-            petDocumentsService.addPetDocument(petDocuments1);
-            petDocumentsService.addPetDocument(petDocuments2);
+            petDocument2.setUrl("https://melissastan.com");
+            petDocument2.setDate(LocalDate.now());
+            petDocument2.setTypeOfDocument("photo");
+            petDocument2.setStatus("approved");
+            petDocumentService.addPetDocument(petDocument1);
+            petDocumentService.addPetDocument(petDocument2);
 
-            petDocumentsService.approvePendingPetDocument(petDocuments1);
-            System.out.println("here");
-            System.out.println( petDocumentsRepository.findAll());
+            petDocumentService.approvePendingPetDocument(petDocument1);
+//            System.out.println("here");
+//            System.out.println( petDocumentsRepository.findAll());
+            petDocumentService.deletePetDocument(petDocument1.getId());
             petDocumentsRepository.findAll();
 
         };
