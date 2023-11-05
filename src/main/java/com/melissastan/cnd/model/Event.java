@@ -8,23 +8,38 @@ import java.time.LocalDateTime;
 public class Event implements Serializable {
     public Event() {}
 
-    public Event(LocalDateTime feedDateTime, String typeOfFood) {
-        this.feedDateTime = feedDateTime;
+      public Event(Long id, LocalDateTime dateTimeOfEvent, String typeOfEvent, String typeOfFood) {
+        this.id = id;
+        this.dateTimeOfEvent = dateTimeOfEvent;
+        this.typeOfEvent = typeOfEvent;
         this.typeOfFood = typeOfFood;
     }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
-    private LocalDateTime feedDateTime;
+    private LocalDateTime dateTimeOfEvent;
     private String typeOfFood;
+    private String typeOfEvent;
 
-    public LocalDateTime getFeedDateTime() {
-        return feedDateTime;
+    public String getTypeOfEvent() {
+        return typeOfEvent;
     }
 
-    public void setFeedDateTime(LocalDateTime feedDateTime) {
-        this.feedDateTime = feedDateTime;
+    public void setTypeOfEvent(String typeOfEvent) {
+        this.typeOfEvent = typeOfEvent;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public LocalDateTime getDateTimeOfEvent() {
+        return dateTimeOfEvent;
+    }
+
+    public void setDateTimeOfEvent(LocalDateTime dateTimeOfEvent) {
+        this.dateTimeOfEvent = dateTimeOfEvent;
     }
 
     public String getTypeOfFood() {
@@ -38,8 +53,10 @@ public class Event implements Serializable {
     @Override
     public String toString() {
         return "Event{" +
-                "feedDateTime=" + feedDateTime +
+                "id=" + id +
+                ", dateTimeOfEvent=" + dateTimeOfEvent +
                 ", typeOfFood='" + typeOfFood + '\'' +
+                ", typeOfEvent='" + typeOfEvent + '\'' +
                 '}';
     }
 }

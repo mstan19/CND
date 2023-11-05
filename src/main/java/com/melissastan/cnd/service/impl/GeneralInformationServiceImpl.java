@@ -39,10 +39,4 @@ public class GeneralInformationServiceImpl implements GeneralInformationService 
         //first number is year and second num is months
         return listOfNumbers;
     }
-//    @Override
-//    public PetDocument updatePetDocument(Long id, String value){
-//        PetDocument petDocument = findPetDocument(id);
-//        petDocument
-//        return petdocRepo.save(petDocument);
-//    }
 }
