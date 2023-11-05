@@ -3,14 +3,16 @@ package com.melissastan.cnd.model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Entity
 public class GeneralInformation implements Serializable {
     public GeneralInformation() {}
 
-    public GeneralInformation(Long id, String description, String breed, String gender, float age, float lastVetVisit) {
+    public GeneralInformation(Long id, String description, LocalDate dateOfBirth, String breed, String gender, float age, float lastVetVisit) {
         this.id = id;
         this.description = description;
+        this.dateOfBirth = dateOfBirth;
         this.breed = breed;
         this.gender = gender;
         this.age = age;
@@ -22,6 +24,8 @@ public class GeneralInformation implements Serializable {
     @Column(nullable = false, updatable = false)
     private Long id;
     private String description;
+    @Column(nullable = true, updatable = false)
+    private LocalDate dateOfBirth;
     @Column(nullable = true, updatable = false)
     private String breed;
     @Column(nullable = false, updatable = false)
@@ -45,6 +49,14 @@ public class GeneralInformation implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getBreed() {

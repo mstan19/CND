@@ -23,6 +23,15 @@ public class PetDocumentServiceImpl implements PetDocumentService {
     public List<PetDocument> findDocsByStatus(String status) {
         return petdocRepo.findByStatus(status);
     }
+    @Override
+    public  List<PetDocument> findDocsByTypeOfDocument(String typeOfDocument) {
+        return petdocRepo.findByTypeOfDocument(typeOfDocument);
+    }
+    @Override
+    public PetDocument getLastReport(){
+        return petdocRepo.findByTypeOfDocument("report").get(petdocRepo.findByTypeOfDocument("report").size() - 1);
+
+    }
 
     public PetDocument addPetDocument(PetDocument petDocument) {
         return petdocRepo.save(petDocument);

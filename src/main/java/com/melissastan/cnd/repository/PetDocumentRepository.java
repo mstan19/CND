@@ -10,6 +10,7 @@ public interface PetDocumentRepository extends ListCrudRepository<PetDocument, L
     void deletePetDocumentById(Long id);
 
     List<PetDocument> findByStatus(String status);
+    List<PetDocument> findByTypeOfDocument(String typeOfDocument);
 
     Optional findPetDocumentById(Long id);
 
