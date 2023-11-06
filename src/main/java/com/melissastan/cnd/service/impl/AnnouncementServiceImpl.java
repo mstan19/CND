@@ -35,7 +35,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
     };
     @Override
     public void deleteExpiredAnnouncement(Announcement announcement){
-        announcementRepository.deleteAnnouncementById(announcement.getId());
+        announcementRepository.deleteById(announcement.getId());
     };
     @Override
     public LocalDate createExpirationDateForAnnouncement(Announcement announcement){

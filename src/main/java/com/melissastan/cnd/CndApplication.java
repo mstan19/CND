@@ -68,64 +68,69 @@ public class CndApplication {
 //            System.out.println( petDocumentsRepository.findAll());
             petDocumentService.getLastReport();
 //            System.out.println("last report above");
-//            petDocumentService.deletePetDocument(petDocument1.getId());
-//            petDocumentsRepository.findAll();
-//            petDocumentService.findPetDocument(petDocument2.getId());
+            petDocumentService.deletePetDocument(petDocument1.getId());
+//            System.out.println("petttt");
+            System.out.println(petDocumentsRepository.findAll());
+            //            petDocumentService.findPetDocument(petDocument2.getId());
 
             //ANNOUNCEMENT
-//            Announcement announcement1 = new Announcement();
-//            Announcement announcement2 = new Announcement();
-//            LocalDate today = LocalDate.now();
-//            LocalDate nextWeek = today.plusWeeks(2);
-//            LocalDate lastWeek = today.minusWeeks(2);
-//
-//            announcement1.setDate(today);
-////            false
-//            announcement1.setExpired(nextWeek.isBefore(today));
-//            announcement1.setMessage("asdasdadasda");
-//            announcement1.setExpirationDate(announcementService.createExpirationDateForAnnouncement(announcement1));
-////            System.out.println(nextWeek.isAfter(today));
-//            announcement2.setDate(today);
-//            //true
-//            announcement2.setExpired(lastWeek.isBefore(today));
-//            announcement2.setMessage("asdasdadasda");
-//            announcement2.setExpirationDate(lastWeek);
-//            announcementService.checkAndSaveOrDeleteExpirationOnAnnouncement(announcement1);
-//            announcementService.checkAndSaveOrDeleteExpirationOnAnnouncement(announcement2);
+            Announcement announcement1 = new Announcement();
+            Announcement announcement2 = new Announcement();
+            LocalDate today = LocalDate.now();
+            LocalDate nextWeek = today.plusWeeks(2);
+            LocalDate lastWeek = today.minusWeeks(2);
+
+            announcement1.setDate(today);
+//            false
+            announcement1.setExpired(nextWeek.isBefore(today));
+            announcement1.setMessage("asdasdadasda");
+            announcement1.setExpirationDate(announcementService.createExpirationDateForAnnouncement(announcement1));
+//            System.out.println(nextWeek.isAfter(today));
+            announcement2.setDate(today);
+            //true
+            announcement2.setExpired(lastWeek.isBefore(today));
+            announcement2.setMessage("asdasdadasda");
+            announcement2.setExpirationDate(lastWeek);
+            announcementService.addAnnouncement(announcement1);
+            announcementService.addAnnouncement(announcement2);
+            announcementService.checkAndSaveOrDeleteExpirationOnAnnouncement(announcement1);
+            announcementService.checkAndSaveOrDeleteExpirationOnAnnouncement(announcement2);
+            System.out.println(announcementRepository.findAll());
+            System.out.println("finding all annnnn");
 //            announcementService.getAllNonExpiredAnnouncements();
 //            announcementService.updateMessageOnAnnouncement(announcement1, "hi");
 
 
             //            GENERAL INFORMATION
-            GeneralInformation generalInformation1 = new GeneralInformation();
-            generalInformation1.setDescription("sdfsdf");
-            generalInformation1.setGender("female");
-            generalInformation1.setBreed("cutie");
-            LocalDate today = LocalDate.now();
-            generalInformation1.setDateOfBirth(today.minusYears(1));
-            generalInformationService.calculateAge(generalInformation1.getDateOfBirth());
-            generalInformationService.calculateLastVetVisit(petDocumentService.getLastReport().getDate());
+//            GeneralInformation generalInformation1 = new GeneralInformation();
+//            generalInformation1.setDescription("sdfsdf");
+//            generalInformation1.setGender("female");
+//            generalInformation1.setBreed("cutie");
+////            LocalDate today = LocalDate.now();
+//            generalInformation1.setDateOfBirth(today.minusYears(1));
+//            generalInformationService.calculateAge(generalInformation1.getDateOfBirth());
+//            generalInformationService.calculateLastVetVisit(petDocumentService.getLastReport().getDate());
 
 
-            //Event
-            Event event1 = new Event();
-            event1.setTypeOfEvent("play");
-            event1.setDateTimeOfEvent(LocalDateTime.now());
-            eventService.addEvent(event1);
-            Event event2 = new Event();
-            event2.setTypeOfEvent("play");
-            event2.setDateTimeOfEvent(LocalDateTime.now());
-            eventService.addEvent(event2);
-            Event event3 = new Event();
-            event3.setTypeOfEvent("play");
-            event3.setDateTimeOfEvent(LocalDateTime.of(2024,12,10,05,23,2,5));
-            eventService.addEvent(event3);
-            System.out.println("findall events");
+//            //Event
+//            Event event1 = new Event();
+//            event1.setTypeOfEvent("play");
+//            event1.setDateTimeOfEvent(LocalDateTime.now());
+//            eventService.addEvent(event1);
+//            Event event2 = new Event();
+//            event2.setTypeOfEvent("play");
+//            event2.setDateTimeOfEvent(LocalDateTime.now());
+//            eventService.addEvent(event2);
+//            Event event3 = new Event();
+//            event3.setTypeOfEvent("play");
+//            event3.setDateTimeOfEvent(LocalDateTime.of(2024,12,10,05,23,2,5));
+//            eventService.addEvent(event3);
+//            System.out.println("findall events");
 //            eventService.deleteEvent(event1);
-            eventService.updateTypeOfEvent(event1, "eat");
-            System.out.println(eventRepository.findAll());
-            eventService.getLatestEvent();
-            eventService.getEventsFrom2Weeks();
+////            eventService.updateTypeOfEvent(event1, "eat");
+//            System.out.println(eventRepository.findAll());
+////            eventService.getLatestEvent();
+////            eventService.getEventsFrom2Weeks();
 
 
         };

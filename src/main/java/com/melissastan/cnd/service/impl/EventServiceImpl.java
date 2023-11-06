@@ -41,9 +41,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public void deleteEvent(Event event) {
-        System.out.println(event.getId());
-        System.out.println("i am deleting evet");
-//        eventRepository.deleteEventById(event.getId());
+        eventRepository.deleteById(event.getId());
     };
     @Override
     public Event updateTypeOfEvent (Event event, String typeOfEvent){
@@ -63,15 +61,12 @@ public class EventServiceImpl implements EventService {
        List<Event> eventsInTwoWeeksRange = new ArrayList<>();
         LocalDateTime startDate = LocalDateTime.now();
         LocalDateTime endDate = startDate.minusWeeks(2);
-        System.out.println("enddate"+endDate);
 
         for (Event event : eventList) {
             if (!event.getDateTimeOfEvent().isAfter(startDate) && !event.getDateTimeOfEvent().isBefore(endDate)) {
                 eventsInTwoWeeksRange.add(event);
-                System.out.println("in the looooop");
             }
         }
-        System.out.println(eventsInTwoWeeksRange);
          return null;
     };
 

@@ -8,7 +8,6 @@ import org.springframework.data.repository.ListCrudRepository;
 import java.util.List;
 
 public interface AnnouncementRepository extends ListCrudRepository<Announcement, Long> {
-    void deleteAnnouncementById(Long id);
 
     List<Announcement> findByIsExpired(boolean isExpired);
 

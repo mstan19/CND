@@ -47,9 +47,7 @@ public class PetDocumentServiceImpl implements PetDocumentService {
 
     @Override
     public void deletePetDocument(Long id) {
-//        System.out.println(petDocument.getId());
-        System.out.println("here is my id");
-        petdocRepo.deletePetDocumentById(id);
+        petdocRepo.deleteById(id);
     };
 
     @Override

@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PetDocumentRepository extends ListCrudRepository<PetDocument, Long> {
-    void deletePetDocumentById(Long id);
 
     List<PetDocument> findByStatus(String status);
     List<PetDocument> findByTypeOfDocument(String typeOfDocument);
